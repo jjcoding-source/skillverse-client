@@ -1,13 +1,11 @@
-
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/hooks/useAuth";
 
 export const metadata: Metadata = {
   title: "SkillVerse - Book Skilled Workers",
-  description: "Connect with trusted plumbers, electricians, cleaners & more",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  description: "Find trusted professionals for your home services",
 };
 
 export default function RootLayout({
@@ -17,8 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-neutral-50 antialiased">
-        {children}
+      <body className="bg-neutral-50">
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
